@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>random</title>
+    <script src="http://mockjs.com/dist/mock.js"></script>
+  </head>
+  <body></body>
+  <script>
+    var random = Mock.Random;
+    var friends = ["小王", "校长", "大多", "皮下"];
+    var data = {
+      email: random.email(),
+      image: random.image("", "#FFF", "pink", "mock.js"),
+      name: random.cname(),
+      url: random.url(),
+      address: random.city(),
+      goodFriend: random.pick(friends),
+    };
+    console.log(JSON.stringify(data, null, 4));
+  </script>
+</html>
