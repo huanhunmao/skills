@@ -1,19 +1,26 @@
 const path = require("path");
+
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
 // console.log(path);
 // console.log(path.join(__dirname, "./dist"));
 
 const config = {
+  mode: "production",
+  //   devServer: {
+  //     hot: true, //开启热更新
+  //   },
   entry: "./src/index.js",
   output: {
     filename: "bundle.js",
     path: path.join(__dirname, "./dist"),
   },
+  plugins: [new HtmlWebpackPlugin()],
   module: {
     rules: [
-      //解析css 加上 scss-loader
       {
-        test: /\.(scss|sass)$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        test: /.\js$/,
+        loader: "babel-loader",
       },
     ],
   },
