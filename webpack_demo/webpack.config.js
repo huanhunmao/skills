@@ -1,7 +1,6 @@
 const path = require("path");
 
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-
+const CopyPlugin = require("copy-webpack-plugin");
 // console.log(path);
 // console.log(path.join(__dirname, "./dist"));
 
@@ -15,7 +14,7 @@ const config = {
     filename: "bundle.js",
     path: path.join(__dirname, "./dist"),
   },
-  plugins: [new HtmlWebpackPlugin()],
+  plugins: [new CopyPlugin([{ from: "assets", to: "dist" }])],
   module: {
     rules: [
       {
