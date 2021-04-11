@@ -19,7 +19,7 @@
           菜品单价
           <input type="text" v-model="unit.price">
         </div>
-        <button  @click="submit">确认</button>
+        <button  @click="submit()">确认</button>
       </form>
       <div class="info" v-if="!isShow">
         {{unit.name}}--{{unit.url}}--{{unit.price}}--{{unit.type}}
@@ -32,7 +32,7 @@
     <div class="right">
       <!-- 列表循环 -->
       <ul>
-        <li  v-for ='(index,item) in lists' :key='item.name'>
+        <li  v-for ='(index,item) in lists' :key='index'>
                 {{item.name}}--{{item.type}}--{{item.price}}
         </li>
       </ul>
@@ -85,6 +85,8 @@ export default {
       // 添加 unit 菜单项目到list 列表
       // ... 扩展运算符 相当于新创建对象 let = new Object()
       this.lists.push({ ...this.unit })
+      //提交到 vuex
+      // this.$store.commit('setList',this.unit)
       // 将原来到 unit 清空
       this.unit.name = ''
       this.unit.price = ''
