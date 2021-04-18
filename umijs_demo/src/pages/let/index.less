@@ -5,22 +5,45 @@
     left: 0;
     top: 0;
     background: url('./imgs/imgBg.png') no-repeat;
-    background-size: cover;
-    .content{
+    background-size: cover;  }
+    .flexColumn {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-self: center;
-        .img1{
-            margin-top: 30px;
-            // width: 100vw;
-            // height: 261px;
+        align-items: center;
+      }
+        .content:extend(.flexColumn){
+            min-height: 100vh;
+            .Img:extend(.flexColumn){
+                position: relative;
+                top: 136px;
+                
+                .img1,.img2{
+                    margin: 16px 0;
+                }
+                .img1{
+                    width: 50vw;
+                    display: block;
+                }
+                .img2{
+                    width: 100vw;
+                    display: block;
+                }
+               
+            }
+            .text{
+                color: #fff;
+                font-size: 24px;
+                line-height: 16px;
+                margin-top: 168px;
+                text-align: center;
+                
+            }
+            .Img2{
+                width: 40vw;
+           
+            }
         }
-        .img2{
-       
-            // background-size: 100vw 20vw;
-            // width: 100vw;
-            // height: 261px;
-        }
-    }
-  }
+    
+    
+
