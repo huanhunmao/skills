@@ -1,11 +1,4 @@
-/**
- * @param {TreeNode} root
- * @return {number}
- * 1、新建变量 存放层级 deep
- * 2、深度优先遍历
- * 3、刷新 deep值  传入参数 l 先拿到每一层的deep 初始为1
- * 4、拿到层级最大值 Math.max(deep,l)
- */
+// 第一种方法
 var maxDepth = function (root) {
   // 新建变量记录层级
   var deep = 0;
@@ -29,4 +22,13 @@ var maxDepth = function (root) {
   // 1 表示传入的默认层级 初始化 层级是 1
   dfs(root, 1); // 调用根节点
   return deep;
+};
+
+// 第二种方法
+var maxDepth = function (root) {
+  // 递归更简单的版本 一句解决问题
+  // 注意 使用 root.left root.right
+  return root == null
+    ? 0
+    : Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
 };

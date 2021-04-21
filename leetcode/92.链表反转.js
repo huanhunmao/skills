@@ -1,16 +1,4 @@
-/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
-/**
- * @param {ListNode} head
- * @param {number} left
- * @param {number} right
- * @return {ListNode}
- */
+// 第一种方法  这个东西有点绕呀   不好写 不好想
 var reverseBetween = function (head, left, right) {
   // 边界条件
   if (left == right) {
@@ -37,3 +25,6 @@ var reverseBetween = function (head, left, right) {
   }
   return zero.next;
 };
+
+// 这个题目 暂时 就写这一种解决方法吧
+// 后续补上
