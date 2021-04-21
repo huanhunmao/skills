@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <title>My first three.js app</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      /* 因为最后渲染会调用 canvas元素呈现出来 */
+      canvas {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="js/1.three.js"></script>
+    <script>
+      // 实例化一个场景
+      var scene = new THREE.Scene();
+      //实例化一个透视相机（有多种）
+      // 参数 1、视野角度 2、宽高比 3、远剪切面 4、近剪切面 后面两个后面会解释
+      var camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+
+      // 实例化一个渲染器（多种） 使用的是WebGLRenderer
+      var renderer = new THREE.WebGLRenderer();
+      // 宽高
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      //appendChild  加入页面 并且使用 canvas展示 出来
+      document.body.appendChild(renderer.domElement);
+
+      //实例化 立方体
+      var geometry = new THREE.BoxGeometry(1, 1, 1);
+      // 材质设置 （多种）
+      var material = new THREE.MeshBasicMaterial({ color: 0x444444 });
+      // mesh 网格
+      var cube = new THREE.Mesh(geometry, material);
+
+      //   网格加入场景中
+      scene.add(cube);
+
+      // 移动相机位置避免和立方体重叠
+      camera.position.z = 5;
+
+      var animate = function () {
+        // 创建了一个循环 比setInterval好
+        //当在后台标签或隐藏的<iframe>s中运行时，通话会暂停，以提高性能和电池寿命。
+        requestAnimationFrame(animate);
+
+        //旋转起来
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+        //调用进行渲染
+        renderer.render(scene, camera);
+      };
+
+      // 启动
+      animate();
+    </script>
+  </body>
+</html>
