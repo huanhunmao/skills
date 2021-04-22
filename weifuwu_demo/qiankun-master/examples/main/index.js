@@ -85,7 +85,7 @@ registerMicroApps(
 );
 
 const { onGlobalStateChange, setGlobalState } = initGlobalState({
-  user: 'qiankun',
+  user: 'fhj',
 });
 
 onGlobalStateChange((value, prev) => console.log('[onGlobalStateChange - master]:', value, prev));
