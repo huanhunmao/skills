@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>创建文字</title>
+    <script src="js/1.three.js"></script>
+    <style>
+      #info {
+        position: absolute;
+        top: 10px;
+        width: 100%;
+        text-align: center;
+        z-index: 100;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="info">Description</div>
+  </body>
+  <script>
+    var mesh;
+
+    // 新建一个AnimationMixer, 并取得AnimationClip实例列表
+    var mixer = new THREE.AnimationMixer(mesh);
+    var clips = mesh.animations;
+
+    // 在每一帧中更新mixer
+    function update() {
+      mixer.update(deltaSeconds);
+    }
+
+    // 播放一个特定的动画
+    var clip = THREE.AnimationClip.findByName(clips, "dance");
+    var action = mixer.clipAction(clip);
+    action.play();
+
+    // 播放所有动画
+    clips.forEach(function (clip) {
+      mixer.clipAction(clip).play();
+    });
+  </script>
+</html>

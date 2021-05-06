@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>画线</title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+    }
+    /* 因为最后渲染会调用 canvas元素呈现出来 */
+    canvas {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+  <body></body>
+  <script src="js/1.three.js"></script>
+  <script>
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    var camera = new THREE.PerspectiveCamera(
+      45,
+      window.innerWidth / window.innerHeight,
+      1,
+      500
+    );
+    camera.position.set(0, 0, 100);
+    camera.lookAt(0, 0, 0);
+
+    var scene = new THREE.Scene();
+
+    // 定义材质
+    var material = new THREE.LineBasicMaterial({ color: 0x0000ff });
+
+    //设置多个顶点
+    var geometry = new THREE.Geometry();
+    geometry.vertices.push(new THREE.Vector3(-10, 0, 0));
+    geometry.vertices.push(new THREE.Vector3(0, 10, 0));
+    geometry.vertices.push(new THREE.Vector3(10, 0, 0));
+
+    // 组合起来 连成一条线
+    var line = new THREE.Line(geometry, material);
+
+    // 剩下的事情就是把它添加到场景中，并调用render（渲染）函数。
+    scene.add(line);
+    renderer.render(scene, camera);
+  </script>
+</html>
