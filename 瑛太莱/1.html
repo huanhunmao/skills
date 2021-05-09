@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // 宏任务 微任务  事件轮询机制
+    var p = new Promise((resolve, reject) => {
+      console.log("a");
+      resolve();
+    });
+
+    setTimeout(() => {
+      console.log("d");
+    }, 0);
+    p.then(() => {
+      console.log("c");
+    });
+    console.log("b");
+
+    // 这个答案是 a b c d new Promise 是同步执行会立即执行 先于同步代码
+    // 解释：promise的构造函数是同步执行，promise.then中的函数是异步执行。
+  </script>
+</html>
