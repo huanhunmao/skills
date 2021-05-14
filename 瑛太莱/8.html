@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    function download(config) {
+      const a = document.createElement("a"); // 创建一个a标签
+      a.href = config.src; // a标签的src属性赋值
+      if (config.target) {
+        a.target = config.target;
+      }
+      a.download = config.fileName; // a标签的download属性赋值
+      document.body.appendChild(a); // 添加a标签到body下
+      a.click(); // 触发a标签点击事件
+      document.body.removeChild(a); //  完成后删除a标签
+    }
+  </script>
+</html>
